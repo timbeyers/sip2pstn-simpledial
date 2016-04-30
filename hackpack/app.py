@@ -17,7 +17,9 @@ app.config.from_pyfile('local_settings.py')
 @app.route('/voice', methods=['GET', 'POST'])
 def voice():
     to = request.values.get('To', None)
-    caller_id = request.values.get('callerId', app.config['TWILIO_CALLER_ID'])
+    if to is None:
+        return ("Point the voice URL of your registration-enabled Twilio SIP domain to this script. "
+                "You will see what it can do for you :-)")
 
     found_pstn = re.search("^sip:[+]?1?([0-9]{10})@", to)
     if found_pstn:
@@ -29,6 +31,7 @@ def voice():
         with response.dial(answerOnBridge=True) as d:
             d.sip(to)
     else:
+        caller_id = request.values.get('callerId', app.config['TWILIO_CALLER_ID'])
         with response.dial(answerOnBridge=True, callerId=caller_id) as d:
             d.number(to)
 
