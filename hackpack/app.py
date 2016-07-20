@@ -23,9 +23,12 @@ def voice():
         return ("Point the voice URL of your registration-enabled Twilio SIP domain to this script. "
                 "You will see what it can do for you :-)")
 
-    found_pstn = re.search("^sip:[+]?1?([0-9]{10})@", to)
-    if found_pstn:
-        to = "+1{0}".format(found_pstn.group(1))
+    found_us_pstn = re.search("^sip:[+]?1?([0-9]{10})@", to)
+    found_int_pstn = re.search("^sip:[+]?([0-9]{10,14})@", to)
+    if found_us_pstn:
+        to = "+1{0}".format(found_us_pstn.group(1))
+    elif found_int_pstn:
+        to = "+{0}".format(found_int_pstn.group(1))
 
     answer_on_bridge = str2bool(request.values.get('answerOnBridge', "True"))
     record_param = request.values.get('record', 'do-not-record')
