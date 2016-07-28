@@ -1,30 +1,16 @@
 {
-    "name": "Twilio Hackpack for Python",
-    "description": "The fastest way to start using Twilio with Python.  Based on Flask microwebframework.",
+    "name": "Quick start for Sending SIP to Twilio",
+    "description": "Provides a webserver that returns TwiML with <Dial> or <Dial><Sip> so you can make outbound call to PSTN or another SIP URI. Leverages Flask microwebframework.",
     "keywords": [
         "twilio",
         "flask",
         "python",
         "web",
-        "SMS",
         "voice"
     ],
     "website": "http://www.twilio.com",
-    "repository": "https://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask",
+    "repository": "https://code.hq.twilio.com/tbeyers/simpledial.git",
     "logo": "https://www.twilio.com/packages/company/img/logos_downloadable_round.png",
-    "env": {
-        "TWILIO_ACCOUNT_SID": {
-            "description": "Your Twilio account's unique identifier, found here: https://www.twilio.com/user/account",
-            "value": "ACxxxxxxxxxxxxxx"
-        },
-        "TWILIO_AUTH_TOKEN": {
-            "description": "Your Twilio account's secret key, found here: https://www.twilio.com/user/account",
-            "value": "yyyyyyyyyyyyyyyyyy"
-        },
-        "TWILIO_CALLER_ID": {
-            "description": "A Twilio number assigned to your account in E.164 format, found here: https://www.twilio.com/user/account/phone-numbers/incoming",
-            "value": "+15556667777"
-        }
-    },
+
     "success_url": "/"
 }
