@@ -12,7 +12,7 @@ Status](https://secure.travis-ci.org/RobSpectre/Twilio-Hackpack-for-Heroku-and-F
 
 Deploy this hackpack to Heroku now!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://code.hq.twilio.com/tbeyers/simpledial.git)
 
 
 ## Features
