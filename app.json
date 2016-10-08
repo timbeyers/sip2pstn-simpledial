@@ -1,15 +1,16 @@
 {
-    "name": "Quick start for Sending SIP to Twilio",
-    "description": "Provides a webserver that returns TwiML with <Dial> or <Dial><Sip> so you can make outbound call to PSTN or another SIP URI. Leverages Flask microwebframework.",
+    "name": "Quick start enabling an IP phone to make calls to public telephone network using Twilio",
+    "description": "Provides a webserver that returns TwiML with <Dial> or <Dial><Sip> so you can make outbound call to PSTN or another SIP Endpoint. Leverages Flask microwebframework.",
     "keywords": [
         "twilio",
         "flask",
         "python",
         "web",
         "voice"
+        "TwiML"
     ],
     "website": "http://www.twilio.com",
-    "repository": "https://code.hq.twilio.com/tbeyers/simpledial.git",
+    "repository": "https://github.com/timbeyers/sip2pstn-simpledial.git",
     "logo": "https://www.twilio.com/packages/company/img/logos_downloadable_round.png",
 
     "success_url": "/"
