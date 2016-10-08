@@ -1,5 +1,5 @@
 {
-    "name": "Quick start enabling an IP phone to make calls to public telephone network using Twilio",
+    "name": "SIP Endpoint enabled with Twilio",
     "description": "Provides a Flask webserver that returns TwiML so you can make outbound call to PSTN.",
     "keywords": [
         "twilio",
