@@ -1,5 +1,5 @@
 {
-    "name": "SIP Endpoint enabled with Twilio",
+    "name": "SIP-to-Twilio",
     "description": "Provides a Flask webserver that returns TwiML so you can make outbound call to PSTN.",
     "keywords": [
         "twilio",
