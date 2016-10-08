@@ -1,5 +1,4 @@
-# A sample Twilio app for customers sending SIP to Twilio and wishing to dial to PSTN or to dial a SIP URI.
-Now a Twilio customer can simply do 1-click deployment of the app to Heroku and configure a single Voice URL in the console with a Twilio provisioned phone number and a customer can place calls from their favorite SIP Endpoint to anywhere in the world.
+# A sample Twilio app to help you enable your soft or hard phone with the power of Twilio's global telephone network. Below you can simply do 1-click deployment of the app to Herok and configure a single Voice URL in the Twilio console with a Twilio provisioned phone number and you can place and receive calls anywhere in the world - all you need is a internet connection.
 
 
 [![Build
@@ -8,10 +7,16 @@ Status](https://secure.travis-ci.org/RobSpectre/Twilio-Hackpack-for-Heroku-and-F
 [![Coverage Status](https://coveralls.io/repos/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask/badge.png)]
 (https://coveralls.io/r/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask)
 
-
 Deploy this sample app to Heroku now!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://code.hq.twilio.com/tbeyers/simpledial.git)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/timbeyers/sip2pstn-simpledial.git)
+
+## What phones can I use?
+You can use any SIP enabled phone. This includes both hard IP phones from brands like Polycom, Cisco, Obihai, Grandstream, as well as soft phones on laptops and smartphones like Bria or Zoiper.
+
+## Why connect your phone to Twilio?
+1) No contracts or monthly charges. You just pay low charges for calls you make or receive.
+2) You can instantly provision a local telephone number in 50 countries to give you local presence and routes those calls to your phone of preference.
 
 
 ## Features
@@ -25,9 +30,10 @@ The following formats for phone-number are supported:
 
 The previously mentioned formats can be used when you enter a phone number in your SIP endpoint (i.e. Bria or Zoiper iPhone app).
 
-Some conversion examples
+Some conversion examples:
+
 Origination | Termination | National format     |  E.164 (Twilio format)
------------------------------------------------------------------------
+------------|-------------|---------------------|-----------------------
 USA         | USA         |        415 555 2671 |  +14155552671
 UK          | UK          |       0 207183 8750 |  +442071838750
 USA         | UK          |  011 44 207183 8750 |  +442071838750
