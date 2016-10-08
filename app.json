@@ -1,6 +1,6 @@
 {
     "name": "Quick start enabling an IP phone to make calls to public telephone network using Twilio",
-    "description": "Provides a webserver that returns TwiML with <Dial> or <Dial><Sip> so you can make outbound call to PSTN or another SIP Endpoint. Leverages Flask microwebframework.",
+    "description": "Provides a Flask webserver that returns TwiML so you can make outbound call to PSTN.",
     "keywords": [
         "twilio",
         "flask",
