@@ -122,8 +122,12 @@ def client_incoming():
 # Installation success page
 @app.route('/')
 def index():
+
+    voice_url = url_for('.voice', _external=True) + "?callerId=+XXXXXXXXXXX"
+
     params = {
-        'Voice Request URL': url_for('.voice', _external=True),
+         'Voice URL': voice_url
+#        'Voice Request URL': url_for('.voice', _external=True),
 #        'SMS Request URL': url_for('.sms', _external=True),
 #        'Client URL': url_for('.client', _external=True)
     }
