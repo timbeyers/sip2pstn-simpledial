@@ -86,26 +86,6 @@ heroku open
 </pre>
 
 
-### Development
-
-Getting your local environment setup to work with this app is similarly easy. After you configure your hackpack with the steps above, use this guide to get going locally:
-
-1) Install the dependencies.
-
-<pre>
-make init
-</pre>
-
-2) Launch local development webserver
-<pre>
-heroku local
-</pre>
-
-3) Open browser to [http://localhost:5000](http://localhost:5000).
-
-4) Tweak away on `hackpack/app.py`.
-
-
 ## Meta 
 
 * No warranty expressed or implied.  Software is as is. Diggity.
