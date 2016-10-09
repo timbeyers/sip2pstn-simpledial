@@ -92,7 +92,9 @@ Getting your local environment setup to work with this app is similarly easy. Af
 
 1) Install the dependencies.
 
+<pre>
 make init
+</pre>
 
 2) Launch local development webserver
 <pre>
