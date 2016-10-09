@@ -15,12 +15,10 @@
     <a href="https://www.twilio.com/console/voice/sip/endpoints"
        class="button">Click to configure your SIP Domain</a>
 
-url_for('.voice', _external=True)
-
   <!--  'Voice Request URL': url_for('.voice', _external=True), -->
 
-    <a href={{ url_for('.voice') }}>Voice</a>
-    
+    <a href={{ url_for('.voice') }?callerId=+XXXXXXXXXXX}>url_for('.voice')?callerId=+14087998993</a>
+
  <!--   <dl id="url_list">
         {% for key, value in params.items() %}
         <dt>{{key}}</dt>
