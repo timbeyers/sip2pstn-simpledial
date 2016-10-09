@@ -17,7 +17,11 @@
 
   <!--  'Voice Request URL': url_for('.voice', _external=True), -->
 
-    <a href={{ url_for('.voice') }?callerId=+XXXXXXXXXXX}>url_for('.voice')?callerId=+14087998993</a>
+    URL voice_url = new URL(url_for('.voice'), "?callerId=+XXXXXXXXXXX");
+
+<!--    <a href={{ url_for('.voice') }?callerId=+XXXXXXXXXXX}>url_for('.voice')?callerId=+14087998993</a> -->
+
+    <a href={{ voice_url }}>voice_url</a>
 
  <!--   <dl id="url_list">
         {% for key, value in params.items() %}
