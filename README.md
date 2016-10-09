@@ -1,5 +1,5 @@
 # Connect your IP Phone to Twilio and call anywhere in world.
-### <5MIN! Just do 1-click deployment to Heroku and configure a Voice URL in the Twilio console 
+### Fast! Just do 1-click deployment to Heroku and configure a Voice URL in the Twilio console 
 ### With a Twilio provisioned [phone number](https://www.twilio.com/user/account/phone-numbers/incoming) you can place and receive calls anywhere in the world - all you need is an internet connection.
 
 
@@ -17,12 +17,13 @@ You can use any IP phone that supports SIP. This includes both hard IP phones fr
 ## Why connect your phone to Twilio?
 1. No contracts or monthly charges. You just pay low charges for calls you make or receive.
 2. No cost to register your IP phone with Twilio so you can receive calls.
-3. You can instantly provision a local telephone number in 50 countries to give you local presence
-4. Build custom call handling logic so you can be reached on the right device at the right time in the right place
+3. You can instantly provision a local telephone number in 50 countries to give you local presence.
+4. Build custom call handling logic so you can be reached on the right device at the right time in the right place.
 
 ## Features
 Twilio requires that phone numbers be in E.164 format. To relax this restriction, this app allows the following more commonly known formats.
 Each of the following formats are supported. It is assumed the calls originate from US.
+
 1. E.164 format - i.e. +14157664555
 2. US domestic formats - i.e. 14157664555,4157664555
 3. Any time 011 exit code from US - i.e. 0114415627220000
@@ -41,12 +42,11 @@ USA         | UK          |  011 44 207183 8750 |  +442071838750
 
 ## Usage
 
-There exists a route /voice that contains you can augment for more advanced call handling. 
+There exists a route /voice that contains the code you can augment for more advanced call handling. 
 You can edit `hackpack/app.py`.
 
 This app solves a specific voice use case. If you want a more generic app that let's you play with both Voice and SMS then please see: Twilio-Hackpack-for-Heroku-and-Flask
 
-```
 
 ## Installation
 
