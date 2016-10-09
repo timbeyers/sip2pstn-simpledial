@@ -1,5 +1,6 @@
-# A sample Twilio app to help you enable your soft or hard phone with the power of Twilio's global telephone network. Below you can simply do 1-click deployment of the app to Herok and configure a single Voice URL in the Twilio console with a Twilio provisioned phone number and you can place and receive calls anywhere in the world - all you need is a internet connection.
-
+# A sample Twilio app to help you enable you to place calls to PSTN with your IP phone with the power of Twilio's global super network.
+## Below you can simply do 1-click deployment of the app to Heroku and configure a single Voice URL in the Twilio console 
+## With a Twilio provisioned phone number and you can place and receive calls anywhere in the world - all you need is an internet connection.
 
 [![Build
 Status](https://secure.travis-ci.org/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask.png)]
@@ -12,21 +13,21 @@ Deploy this sample app to Heroku now!
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/timbeyers/sip2pstn-simpledial.git)
 
 ## What phones can I use?
-You can use any SIP enabled phone. This includes both hard IP phones from brands like Polycom, Cisco, Obihai, Grandstream, as well as soft phones on laptops and smartphones like Bria or Zoiper.
+You can use any IP phone that supports SIP. This includes both hard IP phones from brands like Polycom, Cisco, Obihai, Grandstream, as well as soft phones on laptops and smartphones like Bria or Zoiper.
 
 ## Why connect your phone to Twilio?
 1) No contracts or monthly charges. You just pay low charges for calls you make or receive.
-2) You can instantly provision a local telephone number in 50 countries to give you local presence and routes those calls to your phone of preference.
-
+2) No cost to register your IP phone with Twilio so you can receive calls.
+3) You can instantly provision a local telephone number in 50 countries to give you local presence
+4) Build custom call handling logic so you can be reached on the right device at the right time in the right place
 
 ## Features
-
-Twilio requires that phone numbers be in E.164 format. To relax this restriction, this app allows the following more intuitive and convenient formats.
-The following formats for phone-number are supported:
+Twilio requires that phone numbers be in E.164 format. To relax this restriction, this app allows the following more commonly known formats.
+Each of the following formats are supported. It is assumed the calls originate from US.
 1) E.164 format - i.e. +14157664555
 2) US domestic formats - i.e. 14157664555,4157664555
 3) Any time 011 exit code from US - i.e. 0114415627220000
-4) SIP URI - i.e. username@somedomain.com
+4) SIP URI - i.e. sip:username@somedomain.com
 
 The previously mentioned formats can be used when you enter a phone number in your SIP endpoint (i.e. Bria or Zoiper iPhone app).
 
@@ -41,10 +42,10 @@ USA         | UK          |  011 44 207183 8750 |  +442071838750
 
 ## Usage
 
-This sample app ships with one ready-to-go endpoints for your Twilio Voice apps.  The one routes /voice containcode you can modify.
+There exists a route /voice that contains you can augment for more advanced call handling. 
 You can edit `hackpack/app.py`.
 
-This app solves a specific voice use case. If you want a more generic app to play with both Voice and SMS then please see: Twilio-Hackpack-for-Heroku-and-Flask
+This app solves a specific voice use case. If you want a more generic app that let's you play with both Voice and SMS then please see: Twilio-Hackpack-for-Heroku-and-Flask
 
 ```
 
@@ -56,13 +57,13 @@ Step-by-step on how to deploy, configure and develop on this sample app.
 
 Use Heroku to deploy this hackpack immediately:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://heroku.com/deploy?template=https://github.com/timbeyers/sip2pstn-simpledial.git)
 
 ### Getting Started 
 
 1) Grab latest source
 <pre>
-git clone git://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask.git 
+git clone git://github.com/timbeyers/sip2pstn-simpledial 
 </pre>
 
 2) Navigate to folder and create new Heroku Cedar app
@@ -86,18 +87,12 @@ heroku open
 </pre>
 
 
-### Configuration
-
-Want to use the built-in Twilio Client template?  Configure your hackpack with
-three easy options.
-
-
-### What you need to do to make calls from your SIP Endpoint (Bria client) to any cell phone or mobile on earth
+### Place calls from your SIP Endpoint (Bria client) to any phone
 1) Create an account on Heroku
 2) Deploy this app to Heroku (1-click)
  -> Make note of the URL of this app
-3) Buy a phone number on the Twilio console
-4) Navigate to SIP Domain->Domains->Voice URL and assign Heroku URL
+3) Buy a phone number on the Twilio console or verify your personal mobile number
+4) Navigate to SIP Domain->Domains->Voice URL and assign the Heroku URL
  -> Assign your phone number to the callerId parameter in Heroku URL
  -> You need the /voice route
  i.e. http://sip2pstn-simpledial.herokuapp.com/voice?callerId=+19097428752
