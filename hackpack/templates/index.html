@@ -10,11 +10,6 @@
 %}
 
 {% block content %}
-    <a href="https://www.twilio.com/user/account/phone-numbers/incoming"
-       class="button">Click to buy a phone number from Twilio</a>
-    <a href="https://www.twilio.com/console/voice/sip/endpoints"
-       class="button">Click to configure your SIP Domain</a>
-
     <dl id="url_list">
         {% for key, value in params.items() %}
         <dt>{{key}}</dt>
@@ -22,5 +17,9 @@
         {% endfor %}
     </dl>
 
-
+    <a href="https://www.twilio.com/user/account/phone-numbers/incoming"
+       class="button">Click to buy a phone number from Twilio</a>
+    <a href="https://www.twilio.com/console/voice/sip/endpoints"
+       class="button">Click to configure your SIP Domain</a>
+    
 {% endblock %}
