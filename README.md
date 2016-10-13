@@ -45,7 +45,7 @@ USA         | UK          |  011 44 207183 8750 |  +442071838750
 There exists a route /voice that contains the code you can augment for more advanced call handling. 
 You can edit `hackpack/app.py`.
 
-This app solves a specific voice use case. If you want a more generic app that let's you play with both Voice and SMS then please see: Twilio-Hackpack-for-Heroku-and-Flask
+This app solves a specific voice use case. If you want a more generic app that let's you play with both Voice and SMS then please see: [Twilio-Hackpack-for-Heroku-and-Flask](https://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask)
 
 
 ## Installation
