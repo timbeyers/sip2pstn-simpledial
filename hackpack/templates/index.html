@@ -9,19 +9,19 @@
 {% block blurb %}Please configure your SIP Domain Voice URL with the following Heroku URL.
 Replace +1NXXNXXXXXX with your callerId in E.164 format. callerId must be a Twilio provisioned number or a verified number:{% endblock %}
 
-<a href="https://www.twilio.com/console/phone-numbers/verified">To verify with Twilio your personal mobile number</a>
-
 {% block content %}
     <dl id="url_list">
         {% for key, value in params.items() %}
         <dt>{{key}}</dt>
-        <dd><a href="{{value}}">{{value}}</a></dd>
+        <dd><a href="{{value}}"><font color="FFFFFF">{{value}}</font></a></dd>
         {% endfor %}
     </dl>
 
+    <a href="https://www.twilio.com/console/phone-numbers/verified"
+       class="button" >Verify your number with Twilio</a>
     <a href="https://www.twilio.com/user/account/phone-numbers/incoming"
        class="button">Buy a phone number from Twilio</a>
     <a href="https://www.twilio.com/console/voice/sip/endpoints"
-       class="button">Configure your SIP Domain</a>
+       class="button">Configure your Twilio SIP Domain</a>
 
 {% endblock %}

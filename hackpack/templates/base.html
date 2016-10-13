@@ -49,6 +49,10 @@
     </section>
     <footer>
         <p class="footer">
+        </p>
+    </footer>
+  </div>
+  {% block footer_js %}
             Source on <a
                 href="https://github.com/timbeyers/sip2pstn-simpledial">Github</a>.
             Released under <a
@@ -56,9 +60,6 @@
                 MIT license</a>.
             Based on the incredible  <a https://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask>HackPack</a>
             With Dialing logic by Yan Zhou and Nakul Rathod
-        </p>
-    </footer>
-  </div>
-  {% block footer_js %}{% endblock %}
+  {% endblock %}
 </body>
 </html>
