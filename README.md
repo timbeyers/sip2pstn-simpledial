@@ -90,20 +90,7 @@ heroku open
 
 * No warranty expressed or implied.  Software is as is. Diggity.
 * [MIT License](http://www.opensource.org/licenses/mit-license.html)
-* Lovingly crafted by [Twilio New
- York](http://www.meetup.com/Twilio/New-York-NY/) 
-
 
 ## Community Contributors
-
-Here we recognize members of the Twilio community who worked on this.
-
-* [Timothée Boucher](http://www.timotheeboucher.com/) - idea for production
-  branch
-* [Oscar](http://labcoder.com/) - Bug fix for user input
-* [Zachary
-  Woase](http://zacharyvoase.com/) - [Twilio signature
-  validation](https://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask/pull/7) for production branch.
-* [Kevin Burke](http://www.twentymilliseconds.com/) - Better FTU for Twilio
-  Client.
+* Hackpack authors provided a great framework to build off of
 * Yan Zhou and  Nakul Rathod for adding call handling logic
