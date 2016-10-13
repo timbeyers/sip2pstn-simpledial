@@ -285,10 +285,16 @@ class Configure(object):
         self.logger.debug("Finding Heroku remote in git configuration...")
         subdomain = None
         for line in git_config:
-            if "git@heroku.com" in line:
-                s = line.split(":")
-                subdomain = s[1].replace('.git', '')
+
+            if "git.heroku.com" in line:
+                s = line.split("/")
+                subdomain = s[3].replace('.git', '')
                 self.logger.debug("Heroku remote found: {0}".format(subdomain))
+
+#            if "git@heroku.com" in line:
+#                s = line.split(":")
+#                subdomain = s[1].replace('.git', '')
+#                self.logger.debug("Heroku remote found: {0}".format(subdomain))
 
         if subdomain:
             host = "http://{0}.herokuapp.com".format(subdomain.strip())
