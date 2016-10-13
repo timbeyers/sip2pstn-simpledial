@@ -1,6 +1,6 @@
 {
-    "name": "SIP-to-Twilio",
-    "description": "Provides a Flask webserver that returns TwiML so you can make outbound call to PSTN.",
+    "name": "sip2pstn-simpledial",
+    "description": "Provides a Flask-based webserver that returns TwiML so your SIP endpoint can make calls.",
     "keywords": [
         "twilio",
         "flask",
