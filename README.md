@@ -30,30 +30,14 @@ The previously mentioned formats can be used when you enter a phone number in yo
 
 Some conversion examples:
 
-From        | To          | National format     |  E.164 (Twilio format)
+From        | To          | National format     |  E.164
 ------------|-------------|---------------------|-----------------------
-USA         | USA         |        415 555 2671 |  +14155552671
-UK          | UK          |       0 207183 8750 |  +442071838750
-USA         | UK          |  011 44 207183 8750 |  +442071838750
+USA         | USA         | 415 555 2671        |  +14155552671
+UK          | UK          | 0 207183 8750       |  +442071838750
+USA         | UK          | 011 44 207183 8750  |  +442071838750
 
+Note: [E.164](https://en.wikipedia.org/wiki/E.164) format is required by Twilio.
 
-## Usage
-
-There exists a route /voice that contains the code you can augment for more advanced call handling. 
-You can edit `hackpack/app.py`.
-
-This app solves a specific voice use case. If you want a more generic app that let's you play with both Voice and SMS then please see: [Twilio-Hackpack-for-Heroku-and-Flask](https://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask)
-
-
-## Installation
-
-Step-by-step on how to deploy, configure and develop on this sample app.
-
-### Fastest Deploy
-
-Use Heroku to deploy this hackpack immediately:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://heroku.com/deploy?template=https://github.com/timbeyers/sip2pstn-simpledial.git)
 
 ### Getting Started 
 
@@ -85,11 +69,16 @@ heroku open
 
 ### Usage
 
-The following code is what is executed when the Request URL performs a Webhook.
-To learn more about what the Twilio's Voice Request see [here](https://www.twilio.com/docs/api/twiml/twilio_request)
-The To: field in the Twilio request will be of the form: sip:phonenumber@yoursipdomain.sip.us1.twilio.com
-The following code extracts the phone number and converts to the format to E.164 if it is in US National format
-The code supports bridging a call from SIP to PSTN as well as from SIP to SIP.
+There exists a route /voice that contains the code you can augment for more advanced call handling. 
+You can edit `hackpack/app.py`.
+
+This app solves a specific voice use case. If you want a more generic app that let's you play with both Voice and SMS then please see: [Twilio-Hackpack-for-Heroku-and-Flask](https://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask)
+
+* The following code is executed when a SIP INVITE is received by Twilio and your SIP Domain Voice URL points to this Webapp
+* To learn more about what the Twilio's Voice Request see [here](https://www.twilio.com/docs/api/twiml/twilio_request)
+* The `To:` field in the Twilio request will be of the form: sip:phonenumber@yoursipdomain.sip.us1.twilio.com
+* The following code extracts the phone number and converts to the format to E.164 if it is in US National format
+* The code supports bridging a call from SIP to PSTN as well as from SIP to SIP
 <pre>
 # Voice Request URL
 @app.route('/voice', methods=['GET', 'POST'])
