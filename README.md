@@ -1,7 +1,6 @@
-# Connect your SIP-based IP Phone to Twilio and call anywhere in world.
-### To make calls    - Try the Deploy-to-Heroku button to deploy the Webapp in under 5 minutes 
-### To receive calls - All you need is a Twilio provisioned [phone number](https://www.twilio.com/user/account/phone-numbers/incoming)
-
+# Connect your SIP-based IP Phone to Twilio and call any phone anywhere
+<b> To make calls    - Try the Deploy-to-Heroku button to deploy the Webapp in under 5 minutes </b>
+<b>To receive calls - All you need is a Twilio provisioned [phone number](https://www.twilio.com/user/account/phone-numbers/incoming) </b>
 
 Deploy this sample app to Heroku now!
 
@@ -9,7 +8,7 @@ Deploy this sample app to Heroku now!
 
 ## What phones can I use?
 You can use any IP phone that supports SIP. This includes both hard IP phones from brands like Polycom, Cisco, Obihai, Grandstream, as well as soft phones on laptops and smartphones like Bria or Zoiper.
-### [Instructions to configure your SIP Endpoint](https://www.twilio.com/docs/api/twilio-sip/pv-sip-registration#configure-your-sip-endpoint)
+[Instructions to configure your SIP Endpoint](https://www.twilio.com/docs/api/twilio-sip/pv-sip-registration#configure-your-sip-endpoint)
 
 ## Why connect your phone to Twilio?
 1. No contracts or monthly charges. You just pay low charges for calls you make or receive.
@@ -75,12 +74,12 @@ You can edit `hackpack/app.py`.
 This app solves a specific voice use case. If you want a more generic app that let's you play with both Voice and SMS then please see: [Twilio-Hackpack-for-Heroku-and-Flask](https://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask)
 
 * The following code is executed when a SIP INVITE is received by Twilio and your SIP Domain Voice URL points to this Webapp
-* To learn more about what the Twilio's Voice Request see [here](https://www.twilio.com/docs/api/twiml/twilio_request)
-* The `To:` field in the Twilio request will be of the form: sip:phonenumber@yoursipdomain.sip.us1.twilio.com
+* To learn more about Twilio's Voice Request see [here](https://www.twilio.com/docs/api/twiml/twilio_request)
+* The `To:` field in the Twilio request will be of the form: `sip:phonenumber@yoursipdomain.sip.us1.twilio.com`
 * The following code extracts the phone number and converts to the format to E.164 if it is in US National format
 * The code supports bridging a call from SIP to PSTN as well as from SIP to SIP
-<pre>
-# Voice Request URL
+
+```# Voice Request URL
 @app.route('/voice', methods=['GET', 'POST'])
 def voice():
     to = request.values.get('To', None)
@@ -112,7 +111,7 @@ def voice():
             d.number(to)
 
     return str(response)
-</pre>
+```
 
 
 ## Meta 
