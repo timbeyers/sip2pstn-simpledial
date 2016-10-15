@@ -1,6 +1,7 @@
-# Connect your SIP-based IP Phone to Twilio and call any phone anywhere
-<b> To make calls    - Try the Deploy-to-Heroku button to deploy the Webapp in under 5 minutes </b>
-<b>To receive calls - All you need is a Twilio provisioned [phone number](https://www.twilio.com/user/account/phone-numbers/incoming) </b>
+# Twilio sip2pstn-simpledial for Heroku and Flask
+* <b> Connect your SIP-based IP Phone to Twilio and call any phone in the world </b>
+* <b> To make calls - Try the `Deploy to Heroku` button to deploy the Webapp in under 5 minutes </b>
+* <b> To receive calls - All you need is a Twilio provisioned [phone number](https://www.twilio.com/user/account/phone-numbers/incoming) </b>
 
 Deploy this sample app to Heroku now!
 
@@ -79,7 +80,8 @@ This app solves a specific voice use case. If you want a more generic app that l
 * The following code extracts the phone number and converts to the format to E.164 if it is in US National format
 * The code supports bridging a call from SIP to PSTN as well as from SIP to SIP
 
-```# Voice Request URL
+```python
+# Voice Request URL
 @app.route('/voice', methods=['GET', 'POST'])
 def voice():
     to = request.values.get('To', None)
