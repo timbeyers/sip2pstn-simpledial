@@ -1,9 +1,6 @@
-# Connect your IP Phone to Twilio and call anywhere in world.
-### Fast! Just do 1-click deployment to Heroku and configure a Voice URL in the Twilio console 
-### With a Twilio provisioned [phone number](https://www.twilio.com/user/account/phone-numbers/incoming) you can place and receive calls anywhere in the world - all you need is an internet connection.
-
-
-
+# Connect your SIP-based IP Phone to Twilio and call anywhere in world.
+### To make calls    - Try the Deploy-to-Heroku button to deploy the Webapp in under 5 minutes 
+### To receive calls - All you need is a Twilio provisioned [phone number](https://www.twilio.com/user/account/phone-numbers/incoming)
 
 
 Deploy this sample app to Heroku now!
@@ -33,7 +30,7 @@ The previously mentioned formats can be used when you enter a phone number in yo
 
 Some conversion examples:
 
-Origination | Termination | National format     |  E.164 (Twilio format)
+From        | To          | National format     |  E.164 (Twilio format)
 ------------|-------------|---------------------|-----------------------
 USA         | USA         |        415 555 2671 |  +14155552671
 UK          | UK          |       0 207183 8750 |  +442071838750
@@ -83,6 +80,49 @@ heroku scale web=1
 5) Visit the home page of your new Heroku app to see your newly configured app!
 <pre>
 heroku open
+</pre>
+
+
+### Usage
+
+The following code is what is executed when the Request URL performs a Webhook.
+To learn more about what the Twilio's Voice Request see [here](https://www.twilio.com/docs/api/twiml/twilio_request)
+The To: field in the Twilio request will be of the form: sip:phonenumber@yoursipdomain.sip.us1.twilio.com
+The following code extracts the phone number and converts to the format to E.164 if it is in US National format
+The code supports bridging a call from SIP to PSTN as well as from SIP to SIP.
+<pre>
+# Voice Request URL
+@app.route('/voice', methods=['GET', 'POST'])
+def voice():
+    to = request.values.get('To', None)
+    if to is None:
+        return ("Point the voice URL of your registration-enabled Twilio SIP domain to this script. "
+                "You will see what it can do for you :-)")
+    found_e164_pstn = re.search("^sip:([+][0-9]{10,14})@", to)
+    found_011_pstn = re.search("^sip:011([0-9]{10,14})@", to)
+    found_us_pstn = re.search("^sip:[+]?1?([0-9]{10})@", to)
+
+    if found_e164_pstn:
+        to = "{0}".format(found_e164_pstn.group(1))
+    elif found_011_pstn:
+        to = "+{0}".format(found_011_pstn.group(1))
+    elif found_us_pstn:
+        to = "+1{0}".format(found_us_pstn.group(1))
+
+    answer_on_bridge = str2bool(request.values.get('answerOnBridge', "True"))
+    record_param = request.values.get('record', 'do-not-record')
+
+    response = twiml.Response()
+
+    if to.startswith("sip:"):
+        with response.dial(answerOnBridge=answer_on_bridge, record=record_param) as d:
+            d.sip(to)
+    else:
+        caller_id = request.values.get('callerId', app.config['TWILIO_CALLER_ID'])
+        with response.dial(answerOnBridge=answer_on_bridge, callerId=caller_id, record=record_param) as d:
+            d.number(to)
+
+    return str(response)
 </pre>
 
 
