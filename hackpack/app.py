@@ -8,6 +8,7 @@ from flask import request
 from twilio import twiml
 from twilio.util import TwilioCapability
 
+import phonenumbers // libphonenumber
 # Declare and configure application
 app = Flask(__name__, static_url_path='/static')
 app.config.from_pyfile('local_settings.py')
@@ -19,21 +20,14 @@ def str2bool(v):
 @app.route('/voice', methods=['GET', 'POST'])
 def voice():
     to = request.values.get('To', None)
+    regionCode = request.values.get('regionCode','US')
     if to is None:
         return ("Point the voice URL of your registration-enabled Twilio SIP domain to this script. "
                 "You will see what it can do for you :-)")
-
-    found_e164_pstn = re.search("^sip:([+][0-9]{10,14})@", to)
-    found_011_pstn = re.search("^sip:011([0-9]{10,14})@", to)
-    found_us_pstn = re.search("^sip:[+]?1?([0-9]{10})@", to)
-
-    if found_e164_pstn:
-        to = "{0}".format(found_e164_pstn.group(1))
-    elif found_011_pstn:
-        to = "+{0}".format(found_011_pstn.group(1))
-    elif found_us_pstn:
-        to = "+1{0}".format(found_us_pstn.group(1))
-
+    found_number = re.search("^sip:([+]?[0-9]{10,14})@", to)
+    if found_number:
+        number = phonenumbers.parse(found_number.group(1),regionCode)
+        to = phonenumbers.format_number(number,phonenumbers.PhoneNumberFormat.E164)
     answer_on_bridge = str2bool(request.values.get('answerOnBridge', "True"))
     record_param = request.values.get('record', 'do-not-record')
 
