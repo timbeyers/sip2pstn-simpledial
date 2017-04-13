@@ -39,11 +39,11 @@ USA         | UK          | 011 44 207183 8750  |  +442071838750
 Note: [E.164](https://en.wikipedia.org/wiki/E.164) format is required by Twilio.
 
 
-### Getting Started 
+### Getting Started
 
 1) Grab latest source
 <pre>
-git clone git://github.com/timbeyers/sip2pstn-simpledial 
+git clone git://github.com/timbeyers/sip2pstn-simpledial
 </pre>
 
 2) Navigate to folder and create new Heroku Cedar app
@@ -69,7 +69,7 @@ heroku open
 
 ### Usage
 
-There exists a route /voice that contains the code you can augment for more advanced call handling. 
+There exists a route /voice that contains the code you can augment for more advanced call handling.
 You can edit `hackpack/app.py`.
 
 This app solves a specific voice use case. If you want a more generic app that let's you play with both Voice and SMS then please see: [Twilio-Hackpack-for-Heroku-and-Flask](https://github.com/RobSpectre/Twilio-Hackpack-for-Heroku-and-Flask)
@@ -82,23 +82,18 @@ This app solves a specific voice use case. If you want a more generic app that l
 
 ```python
 # Voice Request URL
+# URL params: countryCode=[international country code - ISO alpha2]
 @app.route('/voice', methods=['GET', 'POST'])
 def voice():
     to = request.values.get('To', None)
+    regionCode = request.values.get('countryCode','US')
     if to is None:
         return ("Point the voice URL of your registration-enabled Twilio SIP domain to this script. "
                 "You will see what it can do for you :-)")
-    found_e164_pstn = re.search("^sip:([+][0-9]{10,14})@", to)
-    found_011_pstn = re.search("^sip:011([0-9]{10,14})@", to)
-    found_us_pstn = re.search("^sip:[+]?1?([0-9]{10})@", to)
-
-    if found_e164_pstn:
-        to = "{0}".format(found_e164_pstn.group(1))
-    elif found_011_pstn:
-        to = "+{0}".format(found_011_pstn.group(1))
-    elif found_us_pstn:
-        to = "+1{0}".format(found_us_pstn.group(1))
-
+    found_number = re.search("^sip:([+]?[0-9]{10,14})@", to)
+    if found_number:
+        number = phonenumbers.parse(found_number.group(1),regionCode)
+        to = phonenumbers.format_number(number,phonenumbers.PhoneNumberFormat.E164)
     answer_on_bridge = str2bool(request.values.get('answerOnBridge', "True"))
     record_param = request.values.get('record', 'do-not-record')
 
@@ -116,7 +111,7 @@ def voice():
 ```
 
 
-## Meta 
+## Meta
 
 * No warranty expressed or implied.  Software is as is. Diggity.
 * [MIT License](http://www.opensource.org/licenses/mit-license.html)
