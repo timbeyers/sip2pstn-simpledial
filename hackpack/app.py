@@ -17,10 +17,11 @@ def str2bool(v):
   return v.lower() in ("yes", "true", "t", "1")
 
 # Voice Request URL
+# URL params: countryCode=[international country code - ISO alpha2]
 @app.route('/voice', methods=['GET', 'POST'])
 def voice():
     to = request.values.get('To', None)
-    regionCode = request.values.get('regionCode','US')
+    regionCode = request.values.get('countryCode','US')
     if to is None:
         return ("Point the voice URL of your registration-enabled Twilio SIP domain to this script. "
                 "You will see what it can do for you :-)")
