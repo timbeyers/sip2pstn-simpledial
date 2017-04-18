@@ -25,7 +25,7 @@ def voice():
     if to is None:
         return ("Point the voice URL of your registration-enabled Twilio SIP domain to this script. "
                 "You will see what it can do for you :-)")
-    found_number = re.search("^sip:([+]?[0-9]{10,14})@", to)
+    found_number = re.search("^sip:([+]?[0-9]+)@", to)
     if found_number:
         number = phonenumbers.parse(found_number.group(1),regionCode)
         to = phonenumbers.format_number(number,phonenumbers.PhoneNumberFormat.E164)
